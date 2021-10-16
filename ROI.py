@@ -114,7 +114,6 @@ def CalcoloParametri(y,x,l_radice):
 
                 elif(clustering_rgb[row_area,col_area,B] == 0 and clustering_rgb[row_area,col_area,R] == 0):
                     l_radice+=1
-                    flag=False
                     green_found=True
                     clustering_rgb[row_area,col_area,R] = 50 # Colorazione del punto verde (solo componente rossa)
                     fine_radice_y = row_area
