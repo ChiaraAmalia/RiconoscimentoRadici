@@ -58,6 +58,7 @@ def CalcoloCampione(image): # e restituisce il numero di pixel corrispondente a 
 
     kernel = np.ones((3,3),np.uint8)
     img = cv.morphologyEx(img, cv.MORPH_CLOSE, kernel) #closing
+    cv.imwrite(str(nomefile+'closing.png'),img)
     img_inv=cv.bitwise_not(img)
 
     size = (2,3) 
@@ -65,7 +66,9 @@ def CalcoloCampione(image): # e restituisce il numero di pixel corrispondente a 
     # in corners, abbiamo prima i valori di x e poi i valori di y
     # andiamo a trovare i punti sulla scacchiera in modo da poter poi calcolarne la distanza
     ret, corners_circle = cv.findCirclesGrid(img_inv, size , cv.CALIB_CB_ASYMMETRIC_GRID + cv.CALIB_CB_CLUSTERING) 
-
+    grid=img_focus.copy()
+    cv.drawChessboardCorners(grid, size,corners_circle,ret)
+    cv.imwrite(str(nomefile + " grid.png"), grid)
     # si crea un array (coord) in cui andiamo a inserire tutti gli elementi presenti in corners e andiamo a calcolare la distanza tra i primi due punti
     # ritorna 0 se non vengono trovati punti sulla scacchiera o se questi sono troppo distanti tra loro
     try :    

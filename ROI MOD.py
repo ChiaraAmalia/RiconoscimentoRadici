@@ -136,6 +136,7 @@ def Colorazione(y,x,l_radice):
         risultato[y,x]=[0,0,200]
         angolo = angle_between(fine_radice_y,fine_radice_x,inizio_radice_y,inizio_radice_x)
 
+        l_radice_cm = 0.0
         if(lato_pixel != 0):
             l_radice_cm = (((float(l_radice)/float(lato_pixel))*float(lato_mm))*0.1).__round__(3)
 
